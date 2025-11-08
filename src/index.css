@@ -80,7 +80,7 @@ All colors MUST be HSL.
   }
 
   .animate-scroll-banner {
-    animation: scroll-banner 40s linear infinite;
+    animation: scroll-banner 25s linear infinite;
   }
 
   .pause-animation:hover {

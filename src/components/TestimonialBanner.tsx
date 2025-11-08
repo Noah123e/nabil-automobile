@@ -60,7 +60,7 @@ const TestimonialBanner = () => {
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-secondary/30 to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-secondary/30 to-transparent z-10" />
         
-        <div className="flex animate-scroll-banner hover:pause-animation">
+        <div className="flex animate-scroll-banner">
           {allTestimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.id}-${index}`}
