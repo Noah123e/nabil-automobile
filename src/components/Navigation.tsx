@@ -36,13 +36,10 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-xl group-hover:bg-primary/30 transition-all" />
-              <span className="relative font-display text-2xl font-bold text-primary">
-                Nabil Automobile
-              </span>
-            </div>
+          <Link to="/" className="flex items-center space-x-2">
+            <span className="font-display text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+              Nabil Automobile
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,10 +54,7 @@ const Navigation = () => {
               >
                 {item.label}
                 {location.pathname === item.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                  />
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" />
                 )}
               </Link>
             ))}

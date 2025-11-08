@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import AnimatedPage from "@/components/AnimatedPage";
 import Hero from "@/components/Hero";
-import TestimonialSlider from "@/components/TestimonialSlider";
+import TestimonialBanner from "@/components/TestimonialBanner";
 import VehicleCard from "@/components/VehicleCard";
 import { Button } from "@/components/ui/button";
 import { Shield, Award, Headphones } from "lucide-react";
@@ -11,7 +12,7 @@ const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
 
   return (
-    <div>
+    <AnimatedPage>
       
       {/* Hero Section */}
       <Hero />
@@ -20,9 +21,10 @@ const Index = () => {
       <section className="py-20 container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               Ihr Partner für exklusive Fahrzeuge
@@ -55,10 +57,10 @@ const Index = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
               >
                 <item.icon className="w-12 h-12 text-primary mx-auto mb-4" />
@@ -76,9 +78,10 @@ const Index = () => {
       <section id="highlights" className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -104,14 +107,15 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <TestimonialSlider />
+      <TestimonialBanner />
 
       {/* Contact CTA */}
       <section className="py-20 container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="bg-gradient-to-r from-card to-secondary border border-border rounded-2xl p-12 text-center"
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -131,7 +135,7 @@ const Index = () => {
           </div>
         </motion.div>
       </section>
-    </div>
+    </AnimatedPage>
   );
 };
 

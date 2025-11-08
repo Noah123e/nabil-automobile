@@ -1,5 +1,6 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import AnimatedPage from "@/components/AnimatedPage";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { vehicles } from "@/data/vehicles";
@@ -47,9 +48,10 @@ const Compare = () => {
   ];
 
   return (
-    <div className="pt-32 pb-20 container mx-auto px-4">
+    <AnimatedPage>
+      <div className="pt-32 pb-20 container mx-auto px-4">
         {/* Back Button */}
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">
             <Link to="/catalog">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -60,8 +62,9 @@ const Compare = () => {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -74,9 +77,9 @@ const Compare = () => {
 
         {/* Comparison Table */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Card className="bg-card border-border overflow-hidden">
             {/* Vehicle Images */}
@@ -151,6 +154,7 @@ const Compare = () => {
           </Card>
         </motion.div>
       </div>
+    </AnimatedPage>
   );
 };
 

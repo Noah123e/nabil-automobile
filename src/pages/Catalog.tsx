@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import AnimatedPage from "@/components/AnimatedPage";
 import VehicleCard from "@/components/VehicleCard";
 import FilterBar, { FilterState } from "@/components/FilterBar";
 import { Button } from "@/components/ui/button";
@@ -96,12 +97,13 @@ const Catalog = () => {
   };
 
   return (
-    <div>
+    <AnimatedPage>
       {/* Header */}
       <section className="pt-32 pb-12 container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -158,7 +160,7 @@ const Catalog = () => {
           </Button>
         </motion.div>
       )}
-    </div>
+    </AnimatedPage>
   );
 };
 

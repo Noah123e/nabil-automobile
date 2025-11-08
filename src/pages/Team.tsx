@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import AnimatedPage from "@/components/AnimatedPage";
 import { Card } from "@/components/ui/card";
 import { Mail, Phone } from "lucide-react";
 import teamMember1 from "@/assets/team-member-1.jpg";
@@ -35,12 +36,13 @@ const Team = () => {
   ];
 
   return (
-    <div>
+    <AnimatedPage>
       {/* Header */}
       <section className="pt-32 pb-12 container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -59,9 +61,9 @@ const Team = () => {
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Card className="group bg-card border-border overflow-hidden hover:border-primary/50 transition-all">
                 {/* Image */}
@@ -113,9 +115,10 @@ const Team = () => {
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center space-y-6"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
@@ -134,7 +137,7 @@ const Team = () => {
           </motion.div>
         </div>
       </section>
-    </div>
+    </AnimatedPage>
   );
 };
 
