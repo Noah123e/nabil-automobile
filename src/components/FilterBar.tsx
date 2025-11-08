@@ -104,12 +104,11 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-border">
           <div>
             <label className="text-sm font-medium text-foreground mb-2 block">Marke</label>
-            <Select value={filters.brand} onValueChange={(v) => handleFilterChange("brand", v)}>
+            <Select value={filters.brand || undefined} onValueChange={(v) => handleFilterChange("brand", v)}>
               <SelectTrigger className="bg-background border-border">
                 <SelectValue placeholder="Alle Marken" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Alle Marken</SelectItem>
                 {brands.map((brand) => (
                   <SelectItem key={brand} value={brand}>
                     {brand}
@@ -121,12 +120,11 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
 
           <div>
             <label className="text-sm font-medium text-foreground mb-2 block">Kraftstoff</label>
-            <Select value={filters.fuel} onValueChange={(v) => handleFilterChange("fuel", v)}>
+            <Select value={filters.fuel || undefined} onValueChange={(v) => handleFilterChange("fuel", v)}>
               <SelectTrigger className="bg-background border-border">
                 <SelectValue placeholder="Alle Kraftstoffe" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Alle Kraftstoffe</SelectItem>
                 {fuelTypes.map((fuel) => (
                   <SelectItem key={fuel} value={fuel}>
                     {fuel}
@@ -139,14 +137,13 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           <div>
             <label className="text-sm font-medium text-foreground mb-2 block">Getriebe</label>
             <Select
-              value={filters.transmission}
+              value={filters.transmission || undefined}
               onValueChange={(v) => handleFilterChange("transmission", v)}
             >
               <SelectTrigger className="bg-background border-border">
                 <SelectValue placeholder="Alle Getriebe" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Alle Getriebe</SelectItem>
                 {transmissionTypes.map((trans) => (
                   <SelectItem key={trans} value={trans}>
                     {trans}
@@ -158,12 +155,11 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
 
           <div>
             <label className="text-sm font-medium text-foreground mb-2 block">Fahrzeugtyp</label>
-            <Select value={filters.type} onValueChange={(v) => handleFilterChange("type", v)}>
+            <Select value={filters.type || undefined} onValueChange={(v) => handleFilterChange("type", v)}>
               <SelectTrigger className="bg-background border-border">
                 <SelectValue placeholder="Alle Typen" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Alle Typen</SelectItem>
                 {vehicleTypes.map((type) => (
                   <SelectItem key={type} value={type}>
                     {type}
