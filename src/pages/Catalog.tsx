@@ -1,0 +1,171 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import VehicleCard from "@/components/VehicleCard";
+import FilterBar, { FilterState } from "@/components/FilterBar";
+import { Button } from "@/components/ui/button";
+import { vehicles, Vehicle } from "@/data/vehicles";
+import { useNavigate } from "react-router-dom";
+
+const Catalog = () => {
+  const [filteredVehicles, setFilteredVehicles] = useState<Vehicle[]>(vehicles);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filters, setFilters] = useState<FilterState>({
+    brand: "",
+    fuel: "",
+    transmission: "",
+    type: "",
+    minPrice: "",
+    maxPrice: "",
+    minYear: "",
+    maxYear: "",
+  });
+  const [compareList, setCompareList] = useState<string[]>([]);
+  const navigate = useNavigate();
+
+  const applyFilters = (newFilters: FilterState, search: string) => {
+    let result = vehicles;
+
+    // Search filter
+    if (search) {
+      result = result.filter(
+        (v) =>
+          v.brand.toLowerCase().includes(search.toLowerCase()) ||
+          v.model.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    // Brand filter
+    if (newFilters.brand) {
+      result = result.filter((v) => v.brand === newFilters.brand);
+    }
+
+    // Fuel filter
+    if (newFilters.fuel) {
+      result = result.filter((v) => v.fuel === newFilters.fuel);
+    }
+
+    // Transmission filter
+    if (newFilters.transmission) {
+      result = result.filter((v) => v.transmission === newFilters.transmission);
+    }
+
+    // Type filter
+    if (newFilters.type) {
+      result = result.filter((v) => v.type === newFilters.type);
+    }
+
+    // Price filter
+    if (newFilters.minPrice) {
+      result = result.filter((v) => v.price >= parseInt(newFilters.minPrice));
+    }
+    if (newFilters.maxPrice) {
+      result = result.filter((v) => v.price <= parseInt(newFilters.maxPrice));
+    }
+
+    // Year filter
+    if (newFilters.minYear) {
+      result = result.filter((v) => v.year >= parseInt(newFilters.minYear));
+    }
+    if (newFilters.maxYear) {
+      result = result.filter((v) => v.year <= parseInt(newFilters.maxYear));
+    }
+
+    setFilteredVehicles(result);
+  };
+
+  const handleFilterChange = (newFilters: FilterState) => {
+    setFilters(newFilters);
+    applyFilters(newFilters, searchQuery);
+  };
+
+  const handleSearchChange = (search: string) => {
+    setSearchQuery(search);
+    applyFilters(filters, search);
+  };
+
+  const handleCompare = (vehicleId: string) => {
+    if (compareList.includes(vehicleId)) {
+      setCompareList(compareList.filter((id) => id !== vehicleId));
+    } else if (compareList.length < 3) {
+      setCompareList([...compareList, vehicleId]);
+    }
+  };
+
+  const goToComparison = () => {
+    navigate(`/compare?ids=${compareList.join(",")}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+
+      {/* Header */}
+      <section className="pt-32 pb-12 container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Unsere Fahrzeuge
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            {filteredVehicles.length} exklusive Fahrzeuge verfügbar
+          </p>
+        </motion.div>
+
+        {/* Filter Bar */}
+        <FilterBar onFilterChange={handleFilterChange} onSearchChange={handleSearchChange} />
+      </section>
+
+      {/* Vehicle Grid */}
+      <section className="pb-20 container mx-auto px-4">
+        {filteredVehicles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredVehicles.map((vehicle) => (
+              <VehicleCard
+                key={vehicle.id}
+                vehicle={vehicle}
+                onCompare={handleCompare}
+                isInComparison={compareList.includes(vehicle.id)}
+              />
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-20"
+          >
+            <p className="text-muted-foreground text-lg">
+              Keine Fahrzeuge gefunden. Bitte passen Sie Ihre Filter an.
+            </p>
+          </motion.div>
+        )}
+      </section>
+
+      {/* Compare Button (Floating) */}
+      {compareList.length > 0 && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className="fixed bottom-8 right-8 z-40"
+        >
+          <Button
+            size="lg"
+            onClick={goToComparison}
+            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+          >
+            {compareList.length} Fahrzeuge vergleichen
+          </Button>
+        </motion.div>
+      )}
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Catalog;
