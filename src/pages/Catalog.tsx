@@ -160,7 +160,7 @@ const Catalog = () => {
           <Button
             size="lg"
             onClick={goToComparison}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl hover:shadow-primary/50 transition-all duration-300 text-base px-8 py-6 animate-pulse hover:animate-none"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl hover:shadow-primary/50 transition-all duration-300 text-base px-8 py-6"
           >
             <span className="flex items-center gap-2">
               <span className="bg-primary-foreground text-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">

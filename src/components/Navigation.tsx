@@ -3,10 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [compareList] = useLocalStorage<string[]>("compareList", []);
   const location = useLocation();
 
   useEffect(() => {
@@ -52,11 +54,19 @@ const Navigation = () => {
                   location.pathname === item.path ? "text-primary" : "text-foreground"
                 }`}
               >
-                {item.label}
+                <span className="flex items-center gap-2">
+                  {item.label}
+                  {item.path === "/compare" && compareList.length > 0 && (
+                    <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                      {compareList.length}
+                    </span>
+                  )}
+                </span>
                 {location.pathname === item.path && (
                   <motion.div
                     layoutId="navbar-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                    initial={false}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -100,11 +110,16 @@ const Navigation = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-2 text-base font-medium transition-colors ${
+                  className={`flex items-center justify-between py-2 text-base font-medium transition-colors ${
                     location.pathname === item.path ? "text-primary" : "text-foreground hover:text-primary"
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {item.path === "/compare" && compareList.length > 0 && (
+                    <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                      {compareList.length}
+                    </span>
+                  )}
                 </Link>
               ))}
               <a
