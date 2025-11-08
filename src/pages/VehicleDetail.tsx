@@ -1,7 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import FinanceCalculator from "@/components/FinanceCalculator";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,7 +13,7 @@ const VehicleDetail = () => {
 
   if (!vehicle) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Fahrzeug nicht gefunden</h1>
           <Button asChild>
@@ -35,10 +33,7 @@ const VehicleDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      <div className="pt-32 pb-20 container mx-auto px-4">
+    <div className="pt-32 pb-20 container mx-auto px-4">
         {/* Back Button */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">
@@ -248,9 +243,6 @@ const VehicleDetail = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
   );
 };
 

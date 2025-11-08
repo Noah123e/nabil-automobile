@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import VehicleCard from "@/components/VehicleCard";
 import FilterBar, { FilterState } from "@/components/FilterBar";
 import { Button } from "@/components/ui/button";
@@ -98,9 +96,7 @@ const Catalog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
+    <div>
       {/* Header */}
       <section className="pt-32 pb-12 container mx-auto px-4">
         <motion.div
@@ -162,8 +158,6 @@ const Catalog = () => {
           </Button>
         </motion.div>
       )}
-
-      <Footer />
     </div>
   );
 };

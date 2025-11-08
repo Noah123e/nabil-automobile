@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import VehicleCard from "@/components/VehicleCard";
@@ -13,8 +11,7 @@ const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <div>
       
       {/* Hero Section */}
       <Hero />
@@ -134,8 +131,6 @@ const Index = () => {
           </div>
         </motion.div>
       </section>
-
-      <Footer />
     </div>
   );
 };

@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,9 +23,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
+    <div>
       {/* Header */}
       <section className="pt-32 pb-12 container mx-auto px-4">
         <motion.div
@@ -236,8 +232,6 @@ const Contact = () => {
           </Card>
         </motion.div>
       </section>
-
-      <Footer />
     </div>
   );
 };

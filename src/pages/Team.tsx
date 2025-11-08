@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Mail, Phone } from "lucide-react";
 import teamMember1 from "@/assets/team-member-1.jpg";
@@ -37,9 +35,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
+    <div>
       {/* Header */}
       <section className="pt-32 pb-12 container mx-auto px-4">
         <motion.div
@@ -138,8 +134,6 @@ const Team = () => {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

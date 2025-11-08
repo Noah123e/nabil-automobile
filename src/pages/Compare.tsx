@@ -1,7 +1,5 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { vehicles } from "@/data/vehicles";
@@ -22,17 +20,13 @@ const Compare = () => {
 
   if (compareVehicles.length === 0) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
-        <div className="pt-32 pb-20 container mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">
-            Keine Fahrzeuge zum Vergleichen ausgewählt
-          </h1>
-          <Button asChild>
-            <Link to="/catalog">Zum Katalog</Link>
-          </Button>
-        </div>
-        <Footer />
+      <div className="pt-32 pb-20 container mx-auto px-4 text-center">
+        <h1 className="text-2xl font-bold text-foreground mb-4">
+          Keine Fahrzeuge zum Vergleichen ausgewählt
+        </h1>
+        <Button asChild>
+          <Link to="/catalog">Zum Katalog</Link>
+        </Button>
       </div>
     );
   }
@@ -53,10 +47,7 @@ const Compare = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      <div className="pt-32 pb-20 container mx-auto px-4">
+    <div className="pt-32 pb-20 container mx-auto px-4">
         {/* Back Button */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">
@@ -160,9 +151,6 @@ const Compare = () => {
           </Card>
         </motion.div>
       </div>
-
-      <Footer />
-    </div>
   );
 };
 
