@@ -26,7 +26,7 @@ const Navigation = () => {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Fahrzeuge", path: "/catalog" },
-    { label: "Vergleichen", path: compareLink },
+    { label: "Vergleichen", path: "/compare" },
     { label: "Team", path: "/team" },
     { label: "Kontakt", path: "/contact" },
   ];
@@ -50,37 +50,40 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === item.path ? "text-primary" : "text-foreground"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  {item.label}
-                  {item.path === "/compare" && compareList.length > 0 && (
-                    <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
-                      {compareList.length}
-                    </span>
+            {navItems.map((item) => {
+              const linkTo = item.path === "/compare" ? compareLink : item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={linkTo}
+                  className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                    location.pathname === item.path ? "text-primary" : "text-foreground"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    {item.label}
+                    {item.path === "/compare" && compareList.length > 0 && (
+                      <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                        {compareList.length}
+                      </span>
+                    )}
+                  </span>
+                  {location.pathname === item.path && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      initial={false}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 500, 
+                        damping: 40,
+                        duration: 0.3
+                      }}
+                    />
                   )}
-                </span>
-                {location.pathname === item.path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    initial={false}
-                    transition={{ 
-                      type: "spring", 
-                      stiffness: 500, 
-                      damping: 40,
-                      duration: 0.3
-                    }}
-                  />
-                )}
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Contact Button */}
@@ -114,23 +117,26 @@ const Navigation = () => {
             className="md:hidden bg-card border-t border-border"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center justify-between py-2 text-base font-medium transition-colors ${
-                    location.pathname === item.path ? "text-primary" : "text-foreground hover:text-primary"
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  {item.path === "/compare" && compareList.length > 0 && (
-                    <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
-                      {compareList.length}
-                    </span>
-                  )}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const linkTo = item.path === "/compare" ? compareLink : item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={linkTo}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center justify-between py-2 text-base font-medium transition-colors ${
+                      location.pathname === item.path ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {item.path === "/compare" && compareList.length > 0 && (
+                      <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                        {compareList.length}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
               <a
                 href="tel:015789502200"
                 className="flex items-center space-x-2 py-2 text-base"
