@@ -18,26 +18,44 @@ const Index = () => {
       <Hero />
 
       {/* About Section */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <section className="relative py-32 container mx-auto px-4 overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center space-y-16">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="space-y-6"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Ihr Partner für exklusive Fahrzeuge
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[shine_3s_linear_infinite]">
+                  Ihr Partner für exklusive Fahrzeuge
+                </span>
+              </h2>
+            </motion.div>
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto font-light">
               Bei Nabil Automobile verbinden wir Leidenschaft für Technik mit höchster 
-              Kundenzufriedenheit. Jedes Fahrzeug steht für Qualität, Transparenz und Stil. 
+              Kundenzufriedenheit. Jedes Fahrzeug steht für Qualität, Transparenz und Stil.
+            </p>
+            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
               Mit jahrelanger Erfahrung im Premium-Segment beraten wir Sie persönlich und 
               finden gemeinsam Ihr Traumfahrzeug.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: Shield,
@@ -61,13 +79,20 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+                className="group relative bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.15)] hover:-translate-y-2"
               >
-                <item.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold text-foreground text-lg mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">{item.text}</p>
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                
+                <div className="relative">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors duration-300" />
+                  </div>
+                  <h3 className="font-display font-bold text-foreground text-xl mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+                </div>
               </motion.div>
             ))}
           </div>
