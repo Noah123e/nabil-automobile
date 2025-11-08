@@ -58,10 +58,10 @@ const Hero = () => {
             <Button
               size="lg"
               onClick={scrollToCatalog}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 group px-8 py-6 text-lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg"
             >
               Fahrzeuge entdecken
-              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="ml-2 w-5 h-5" />
             </Button>
             <Button
               size="lg"
