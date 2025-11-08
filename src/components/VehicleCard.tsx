@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Fuel, Gauge, Calendar, Settings } from "lucide-react";
+import { Fuel, Gauge, Calendar, Settings, Check } from "lucide-react";
 import { Vehicle } from "@/data/vehicles";
 
 interface VehicleCardProps {
@@ -27,7 +27,11 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-300">
+      <Card className={`group overflow-hidden bg-card transition-all duration-300 ${
+        isInComparison 
+          ? "border-primary border-2 shadow-lg shadow-primary/20" 
+          : "border-border hover:border-primary/50"
+      }`}>
         {/* Image */}
         <div className="relative overflow-hidden aspect-[4/3]">
           <img
@@ -41,6 +45,17 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
           <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
             {vehicle.condition}
           </div>
+          
+          {/* Selected Badge */}
+          {isInComparison && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute top-4 left-4 bg-primary text-primary-foreground rounded-full p-2 shadow-lg"
+            >
+              <Check className="w-5 h-5" />
+            </motion.div>
+          )}
         </div>
 
         {/* Content */}
@@ -84,12 +99,13 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
               <Button
                 variant="outline"
                 onClick={() => onCompare(vehicle.id)}
-                className={`flex-1 ${
+                className={`flex-1 transition-all duration-300 ${
                   isInComparison
-                    ? "border-primary text-primary bg-primary/10"
-                    : "border-border text-foreground hover:border-primary hover:text-primary"
+                    ? "border-primary text-primary bg-primary/10 hover:bg-primary/20"
+                    : "border-border text-foreground hover:border-primary hover:text-primary hover:bg-primary/5"
                 }`}
               >
+                {isInComparison && <Check className="w-4 h-4 mr-1" />}
                 {isInComparison ? "Entfernen" : "Vergleichen"}
               </Button>
             )}

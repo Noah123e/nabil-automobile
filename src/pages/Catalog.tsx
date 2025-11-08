@@ -6,6 +6,8 @@ import FilterBar, { FilterState } from "@/components/FilterBar";
 import { Button } from "@/components/ui/button";
 import { vehicles, Vehicle } from "@/data/vehicles";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { toast } from "sonner";
 
 const Catalog = () => {
   const [filteredVehicles, setFilteredVehicles] = useState<Vehicle[]>(vehicles);
@@ -20,7 +22,7 @@ const Catalog = () => {
     minYear: "",
     maxYear: "",
   });
-  const [compareList, setCompareList] = useState<string[]>([]);
+  const [compareList, setCompareList] = useLocalStorage<string[]>("compareList", []);
   const navigate = useNavigate();
 
   const applyFilters = (newFilters: FilterState, search: string) => {
@@ -87,8 +89,12 @@ const Catalog = () => {
   const handleCompare = (vehicleId: string) => {
     if (compareList.includes(vehicleId)) {
       setCompareList(compareList.filter((id) => id !== vehicleId));
+      toast.success("Fahrzeug aus dem Vergleich entfernt");
     } else if (compareList.length < 3) {
       setCompareList([...compareList, vehicleId]);
+      toast.success("Fahrzeug zum Vergleich hinzugefügt");
+    } else {
+      toast.error("Maximal 3 Fahrzeuge können verglichen werden");
     }
   };
 
@@ -147,16 +153,21 @@ const Catalog = () => {
       {/* Compare Button (Floating) */}
       {compareList.length > 0 && (
         <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
+          initial={{ y: 100, scale: 0.8 }}
+          animate={{ y: 0, scale: 1 }}
           className="fixed bottom-8 right-8 z-40"
         >
           <Button
             size="lg"
             onClick={goToComparison}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl hover:shadow-primary/50 transition-all duration-300 text-base px-8 py-6 animate-pulse hover:animate-none"
           >
-            {compareList.length} Fahrzeuge vergleichen
+            <span className="flex items-center gap-2">
+              <span className="bg-primary-foreground text-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                {compareList.length}
+              </span>
+              Fahrzeug{compareList.length > 1 ? "e" : ""} vergleichen
+            </span>
           </Button>
         </motion.div>
       )}
