@@ -54,7 +54,11 @@ const Navigation = () => {
               >
                 {item.label}
                 {location.pathname === item.path && (
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" />
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
                 )}
               </Link>
             ))}

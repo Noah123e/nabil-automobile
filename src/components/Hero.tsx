@@ -35,9 +35,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-display text-5xl md:text-7xl font-bold text-foreground"
           >
-            Fahrkultur auf{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              höchstem Niveau
+              Premium Automobile
             </span>
           </motion.h1>
 
@@ -45,9 +44,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground"
           >
-            Willkommen bei Nabil Automobile – Ihrem Partner für exklusive Fahrzeuge
+            Exklusiv. Elegant. Einzigartig.
           </motion.p>
 
           <motion.div
