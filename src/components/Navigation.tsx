@@ -19,10 +19,14 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const compareLink = compareList.length > 0 
+    ? `/compare?ids=${compareList.join(",")}` 
+    : "/compare";
+
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Fahrzeuge", path: "/catalog" },
-    { label: "Vergleichen", path: "/compare" },
+    { label: "Vergleichen", path: compareLink },
     { label: "Team", path: "/team" },
     { label: "Kontakt", path: "/contact" },
   ];
@@ -67,7 +71,12 @@ const Navigation = () => {
                     layoutId="navbar-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                     initial={false}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 500, 
+                      damping: 40,
+                      duration: 0.3
+                    }}
                   />
                 )}
               </Link>
