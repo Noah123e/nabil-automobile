@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Shield, Award, Headphones } from "lucide-react";
 import { vehicles } from "@/data/vehicles";
 import { Link } from "react-router-dom";
+import redCarImage from "@/assets/red-car.jpg";
+import greyCarImage from "@/assets/grey-car.jpg";
 
 const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
@@ -30,7 +32,7 @@ const Index = () => {
       <section ref={parallaxRef} className="relative h-screen overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0">
           <img 
-            src={vehicles[0].image} 
+            src={redCarImage} 
             alt="Premium Vehicle" 
             className="w-full h-full object-cover"
           />
@@ -133,7 +135,7 @@ const Index = () => {
       <section className="relative h-[70vh]">
         <div className="absolute inset-0">
           <img 
-            src={vehicles[1].image} 
+            src={greyCarImage} 
             alt="Contact" 
             className="w-full h-full object-cover"
           />
