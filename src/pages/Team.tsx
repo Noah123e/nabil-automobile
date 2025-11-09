@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import AnimatedPage from "@/components/AnimatedPage";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
@@ -161,10 +162,17 @@ const Team = () => {
               Bei Nabil Automobile steht der Kunde im Mittelpunkt. Wir nehmen uns Zeit für 
               eine ehrliche Beratung und helfen Ihnen, das perfekte Fahrzeug zu finden.
             </p>
-            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed">
+            <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12">
               Qualität, Transparenz und persönlicher Service sind nicht nur Werte – 
               sie sind die Grundlage unserer täglichen Arbeit.
             </p>
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider"
+            >
+              <Link to="/contact">Jetzt Beratungstermin vereinbaren</Link>
+            </Button>
           </motion.div>
         </div>
       </section>

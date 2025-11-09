@@ -85,29 +85,29 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-primary/10 border border-primary/30 rounded-lg p-6 space-y-4"
+          className="bg-black border border-white/10 p-8 space-y-4"
         >
           <div className="flex justify-between items-center">
-            <span className="text-muted-foreground">Monatliche Rate</span>
-            <span className="font-display text-3xl font-bold text-primary">
+            <span className="text-white/60 font-light tracking-wider uppercase text-sm">Monatliche Rate</span>
+            <span className="font-display text-4xl font-light text-white">
               {formatCurrency(monthlyRate)}
             </span>
           </div>
 
-          <div className="border-t border-border pt-4 space-y-2">
+          <div className="border-t border-white/10 pt-4 space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Finanzierungssumme</span>
-              <span className="text-foreground">
+              <span className="text-white/60 font-light">Finanzierungssumme</span>
+              <span className="text-white font-light">
                 {formatCurrency(vehiclePrice - downPayment)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Gesamtkosten</span>
-              <span className="text-foreground">{formatCurrency(totalCost)}</span>
+              <span className="text-white/60 font-light">Gesamtkosten</span>
+              <span className="text-white font-light">{formatCurrency(totalCost)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Zinsen gesamt</span>
-              <span className="text-foreground">{formatCurrency(totalInterest)}</span>
+              <span className="text-white/60 font-light">Zinsen gesamt</span>
+              <span className="text-white font-light">{formatCurrency(totalInterest)}</span>
             </div>
           </div>
         </motion.div>
