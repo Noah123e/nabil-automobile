@@ -58,7 +58,7 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
         <div className="p-8 space-y-6 flex flex-col flex-1">
           {/* Title & Price */}
           <div className="space-y-3">
-            <h3 className="font-display text-2xl font-light text-foreground tracking-tight line-clamp-2">
+            <h3 className="font-display text-2xl font-light text-foreground tracking-tight line-clamp-1">
               {vehicle.brand} {vehicle.model}
             </h3>
             <p className="text-3xl font-light text-white tracking-wide">
