@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import AnimatedPage from "@/components/AnimatedPage";
 import Hero from "@/components/Hero";
 import TestimonialBanner from "@/components/TestimonialBanner";
@@ -10,6 +11,14 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: parallaxRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
     <AnimatedPage>
@@ -17,16 +26,16 @@ const Index = () => {
       {/* Hero Section */}
       <Hero />
 
-      {/* Large Image Section with Text Overlay */}
-      <section className="relative h-screen">
-        <div className="absolute inset-0">
+      {/* Large Image Section with Text Overlay and Parallax */}
+      <section ref={parallaxRef} className="relative h-screen overflow-hidden">
+        <motion.div style={{ y }} className="absolute inset-0">
           <img 
             src={vehicles[0].image} 
             alt="Premium Vehicle" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
-        </div>
+        </motion.div>
         <div className="relative z-10 h-full flex items-center justify-center px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -48,7 +57,7 @@ const Index = () => {
       </section>
 
       {/* About Section - Minimalistic */}
-      <section className="py-32 container mx-auto px-8">
+      <section className="py-24 container mx-auto px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
@@ -88,7 +97,7 @@ const Index = () => {
       </section>
 
       {/* Vehicle Highlights */}
-      <section id="highlights" className="py-32 bg-black">
+      <section id="highlights" className="py-24 bg-black">
         <div className="container mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

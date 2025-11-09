@@ -26,8 +26,9 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
+      className="h-full"
     >
-      <Card className={`group overflow-hidden bg-card transition-all duration-500 border-0 ${
+      <Card className={`group overflow-hidden bg-card transition-all duration-500 border-0 h-full flex flex-col ${
         isInComparison 
           ? "ring-1 ring-white" 
           : "hover:ring-1 hover:ring-white/30"
@@ -54,7 +55,7 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
         </div>
 
         {/* Content */}
-        <div className="p-8 space-y-6">
+        <div className="p-8 space-y-6 flex flex-col flex-1">
           {/* Title & Price */}
           <div className="space-y-3">
             <h3 className="font-display text-2xl font-light text-foreground tracking-tight line-clamp-2">
@@ -86,7 +87,7 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 pt-4">
+          <div className="flex gap-3 pt-4 mt-auto">
             <Button asChild className="flex-1 bg-white text-black hover:bg-white/90 font-light tracking-wider">
               <Link to={`/vehicle/${vehicle.id}`}>Details</Link>
             </Button>
