@@ -10,6 +10,16 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [compareList] = useLocalStorage<string[]>("compareList", []);
   const location = useLocation();
+  const [previousIndex, setPreviousIndex] = useState(-1);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Fahrzeuge", path: "/catalog" },
+    { label: "Vergleichen", path: "/compare" },
+    { label: "Team", path: "/team" },
+    { label: "Kontakt", path: "/contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,17 +29,19 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const currentIndex = navItems.findIndex(item => item.path === location.pathname);
+    if (currentIndex !== -1 && previousIndex !== -1 && previousIndex !== currentIndex) {
+      setDirection(currentIndex > previousIndex ? "right" : "left");
+    }
+    if (currentIndex !== -1) {
+      setPreviousIndex(currentIndex);
+    }
+  }, [location.pathname]);
+
   const compareLink = compareList.length > 0 
     ? `/compare?ids=${compareList.join(",")}` 
     : "/compare";
-
-  const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Fahrzeuge", path: "/catalog" },
-    { label: "Vergleichen", path: "/compare" },
-    { label: "Team", path: "/team" },
-    { label: "Kontakt", path: "/contact" },
-  ];
 
   return (
     <motion.nav
@@ -70,14 +82,13 @@ const Navigation = () => {
                   </span>
                   {location.pathname === item.path && (
                     <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      initial={false}
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary origin-left"
+                      initial={{ scaleX: 0, transformOrigin: direction === "right" ? "left" : "right" }}
+                      animate={{ scaleX: 1 }}
+                      exit={{ scaleX: 0 }}
                       transition={{ 
-                        type: "spring", 
-                        stiffness: 500, 
-                        damping: 40,
-                        duration: 0.3
+                        duration: 0.3,
+                        ease: "easeInOut"
                       }}
                     />
                   )}
