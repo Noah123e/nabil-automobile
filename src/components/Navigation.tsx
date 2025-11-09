@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,8 +10,8 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [compareList] = useLocalStorage<string[]>("compareList", []);
   const location = useLocation();
-  const [previousIndex, setPreviousIndex] = useState(-1);
-  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const navItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -31,13 +31,19 @@ const Navigation = () => {
 
   useEffect(() => {
     const currentIndex = navItems.findIndex(item => item.path === location.pathname);
-    if (currentIndex !== -1 && previousIndex !== -1 && previousIndex !== currentIndex) {
-      setDirection(currentIndex > previousIndex ? "right" : "left");
+    if (currentIndex !== -1 && navItemsRef.current[currentIndex]) {
+      const element = navItemsRef.current[currentIndex];
+      const navContainer = element?.parentElement;
+      if (element && navContainer) {
+        const containerRect = navContainer.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        setIndicatorStyle({
+          left: elementRect.left - containerRect.left,
+          width: elementRect.width
+        });
+      }
     }
-    if (currentIndex !== -1) {
-      setPreviousIndex(currentIndex);
-    }
-  }, [location.pathname]);
+  }, [location.pathname, navItems]);
 
   const compareLink = compareList.length > 0 
     ? `/compare?ids=${compareList.join(",")}` 
@@ -61,12 +67,13 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => {
+          <div className="hidden md:flex items-center space-x-8 relative">
+            {navItems.map((item, index) => {
               const linkTo = item.path === "/compare" ? compareLink : item.path;
               return (
                 <Link
                   key={item.path}
+                  ref={(el) => (navItemsRef.current[index] = el)}
                   to={linkTo}
                   className={`relative text-sm font-medium transition-colors hover:text-primary ${
                     location.pathname === item.path ? "text-primary" : "text-foreground"
@@ -80,21 +87,21 @@ const Navigation = () => {
                       </span>
                     )}
                   </span>
-                  {location.pathname === item.path && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary origin-left"
-                      initial={{ scaleX: 0, transformOrigin: direction === "right" ? "left" : "right" }}
-                      animate={{ scaleX: 1 }}
-                      exit={{ scaleX: 0 }}
-                      transition={{ 
-                        duration: 0.3,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  )}
                 </Link>
               );
             })}
+            <motion.div
+              className="absolute -bottom-1 h-0.5 bg-primary"
+              animate={{
+                left: indicatorStyle.left,
+                width: indicatorStyle.width
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+            />
           </div>
 
           {/* Contact Button */}
