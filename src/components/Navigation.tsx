@@ -30,20 +30,26 @@ const Navigation = () => {
   }, []);
 
   useEffect(() => {
-    const currentIndex = navItems.findIndex(item => item.path === location.pathname);
-    if (currentIndex !== -1 && navItemsRef.current[currentIndex]) {
-      const element = navItemsRef.current[currentIndex];
-      const navContainer = element?.parentElement;
-      if (element && navContainer) {
-        const containerRect = navContainer.getBoundingClientRect();
-        const elementRect = element.getBoundingClientRect();
-        setIndicatorStyle({
-          left: elementRect.left - containerRect.left,
-          width: elementRect.width
-        });
+    const updateIndicator = () => {
+      const currentIndex = navItems.findIndex(item => item.path === location.pathname);
+      if (currentIndex !== -1 && navItemsRef.current[currentIndex]) {
+        const element = navItemsRef.current[currentIndex];
+        const navContainer = element?.parentElement;
+        if (element && navContainer) {
+          const containerRect = navContainer.getBoundingClientRect();
+          const elementRect = element.getBoundingClientRect();
+          setIndicatorStyle({
+            left: elementRect.left - containerRect.left,
+            width: elementRect.width
+          });
+        }
       }
-    }
-  }, [location.pathname, navItems]);
+    };
+
+    // Kurze Verzögerung um sicherzustellen, dass das Layout fertig ist
+    const timer = setTimeout(updateIndicator, 0);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   const compareLink = compareList.length > 0 
     ? `/compare?ids=${compareList.join(",")}` 
