@@ -97,8 +97,8 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
                 onClick={() => onCompare(vehicle.id)}
                 className={`flex-1 transition-all duration-300 font-light tracking-wider ${
                   isInComparison
-                    ? "border-white text-white bg-white/10 hover:bg-white/20"
-                    : "border-white/30 text-white hover:border-white hover:bg-white/5"
+                    ? "border-white text-white bg-white/10 hover:bg-white/20 hover:text-white"
+                    : "border-white/30 text-white hover:border-white hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {isInComparison && <Check className="w-4 h-4 mr-1" />}

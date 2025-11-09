@@ -23,7 +23,7 @@ const Index = () => {
   
   const { scrollYProgress: scrollYProgress2 } = useScroll({
     target: parallaxRef2,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end start"]
   });
   
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
