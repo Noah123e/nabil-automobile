@@ -43,7 +43,7 @@ const TestimonialBanner = () => {
   const allTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="pt-12 pb-20 bg-secondary/30 overflow-hidden">
+    <section className="pt-12 pb-24 bg-secondary/30 overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
