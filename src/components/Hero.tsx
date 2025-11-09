@@ -10,13 +10,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Overlay */}
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Full-Screen Background Video */}
       <motion.div 
-        initial={{ opacity: 0, filter: "blur(20px)", scale: 1.1 }}
-        animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute inset-0"
       >
         <video
           autoPlay
@@ -28,58 +28,51 @@ const Hero = () => {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-black/60" />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center pt-20">
+      {/* Minimalistic Content */}
+      <div className="relative z-10 container mx-auto px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto space-y-8"
+          transition={{ duration: 1.2, delay: 0.3 }}
+          className="max-w-5xl mx-auto space-y-12"
         >
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-5xl md:text-7xl font-bold text-foreground"
+            className="font-display text-6xl md:text-8xl font-light tracking-tight text-white"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              Premium Automobile
-            </span>
+            Premium Automobile
           </motion.h1>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="w-24 h-px bg-white mx-auto"
+          />
+
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="text-xl md:text-2xl text-white/80 font-light tracking-wide"
           >
             Exklusiv. Elegant. Einzigartig.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 1.3 }}
+            className="pt-8"
           >
             <Button
               size="lg"
               onClick={scrollToCatalog}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 group px-8 py-6 text-lg"
+              className="bg-white text-black hover:bg-white/90 px-12 py-8 text-base font-light tracking-wider"
             >
               Fahrzeuge entdecken
-              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="border-primary text-primary hover:bg-primary/10 px-8 py-6 text-lg"
-            >
-              <a href="/contact">Kontakt aufnehmen</a>
             </Button>
           </motion.div>
         </motion.div>

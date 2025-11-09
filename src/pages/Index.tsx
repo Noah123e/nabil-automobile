@@ -17,57 +17,70 @@ const Index = () => {
       {/* Hero Section */}
       <Hero />
 
-      {/* About Section */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      {/* Large Image Section with Text Overlay */}
+      <section className="relative h-screen">
+        <div className="absolute inset-0">
+          <img 
+            src={vehicles[0].image} 
+            alt="Premium Vehicle" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 h-full flex items-center justify-center px-8">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
+            className="max-w-4xl text-center"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
               Ihr Partner für exklusive Fahrzeuge
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <div className="w-24 h-px bg-white mx-auto mb-8" />
+            <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
               Bei Nabil Automobile verbinden wir Leidenschaft für Technik mit höchster 
-              Kundenzufriedenheit. Jedes Fahrzeug steht für Qualität, Transparenz und Stil. 
-              Mit jahrelanger Erfahrung im Premium-Segment beraten wir Sie persönlich und 
-              finden gemeinsam Ihr Traumfahrzeug.
+              Kundenzufriedenheit.
             </p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+      {/* About Section - Minimalistic */}
+      <section className="py-32 container mx-auto px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               {
                 icon: Shield,
-                title: "Qualität & Sicherheit",
-                text: "Alle Fahrzeuge werden sorgfältig geprüft und sind TÜV-zertifiziert",
+                title: "Qualität",
+                text: "TÜV-zertifiziert",
               },
               {
                 icon: Award,
-                title: "Premium-Auswahl",
-                text: "Exklusive Fahrzeuge von Mercedes, BMW, Audi, Porsche und mehr",
+                title: "Premium",
+                text: "Exklusive Auswahl",
               },
               {
                 icon: Headphones,
-                title: "Persönlicher Service",
-                text: "Individuelle Beratung, Finanzierung und Rundum-Betreuung",
+                title: "Service",
+                text: "Persönliche Betreuung",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="text-center space-y-6"
               >
-                <item.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold text-foreground text-lg mb-2">
+                <item.icon className="w-10 h-10 text-white mx-auto" />
+                <h3 className="font-light text-foreground text-2xl tracking-wide">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">{item.text}</p>
+                <p className="text-muted-foreground font-light">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -75,31 +88,29 @@ const Index = () => {
       </section>
 
       {/* Vehicle Highlights */}
-      <section id="highlights" className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4">
+      <section id="highlights" className="py-32 bg-black">
+        <div className="container mx-auto px-8">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            transition={{ duration: 1 }}
+            className="text-center mb-20"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Premium-Fahrzeuge
+            <h2 className="font-display text-5xl md:text-7xl font-light text-foreground mb-6 tracking-tight">
+              Unsere Fahrzeuge
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Entdecken Sie unsere handverlesene Auswahl an Luxusfahrzeugen
-            </p>
+            <div className="w-24 h-px bg-white mx-auto" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {featuredVehicles.map((vehicle) => (
               <VehicleCard key={vehicle.id} vehicle={vehicle} />
             ))}
           </div>
 
           <div className="text-center">
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
               <Link to="/catalog">Alle Fahrzeuge ansehen</Link>
             </Button>
           </div>
@@ -109,29 +120,36 @@ const Index = () => {
       {/* Testimonials */}
       <TestimonialBanner />
 
-      {/* Contact CTA */}
-      <section className="py-20 container mx-auto px-4">
+      {/* Contact CTA - Full Width Image */}
+      <section className="relative h-[70vh]">
+        <div className="absolute inset-0">
+          <img 
+            src={vehicles[1].image} 
+            alt="Contact" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-card to-secondary border border-border rounded-2xl p-12 text-center"
+          transition={{ duration: 1 }}
+          className="relative z-10 h-full flex items-center justify-center px-8"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Bereit für Ihr Traumfahrzeug?
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Vereinbaren Sie noch heute einen unverbindlichen Beratungstermin oder besuchen 
-            Sie uns in unserem Showroom in Senden.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">Jetzt Kontakt aufnehmen</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <a href="tel:015789502200">01578 9502200</a>
-            </Button>
+          <div className="text-center max-w-4xl">
+            <h2 className="font-display text-4xl md:text-6xl font-light text-white mb-8 tracking-tight">
+              Bereit für Ihr Traumfahrzeug?
+            </h2>
+            <div className="w-24 h-px bg-white mx-auto mb-12" />
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
+                <Link to="/contact">Kontakt aufnehmen</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-12 py-6 font-light tracking-wider">
+                <a href="tel:015789502200">01578 9502200</a>
+              </Button>
+            </div>
           </div>
         </motion.div>
       </section>
