@@ -34,7 +34,7 @@ const Contact = () => {
           className="text-center mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Kontakt & Anfahrt
+            Kontakt und Anfahrt
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Wir freuen uns auf Ihre Nachricht oder Ihren Besuch in unserem Showroom

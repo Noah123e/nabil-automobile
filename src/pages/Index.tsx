@@ -14,13 +14,20 @@ import greyCarImage from "@/assets/grey-car.jpg";
 const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const parallaxRef2 = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
     target: parallaxRef,
     offset: ["start start", "end start"]
   });
   
+  const { scrollYProgress: scrollYProgress2 } = useScroll({
+    target: parallaxRef2,
+    offset: ["start start", "end start"]
+  });
+  
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y2 = useTransform(scrollYProgress2, [0, 1], ["0%", "30%"]);
 
   return (
     <AnimatedPage>
@@ -132,15 +139,15 @@ const Index = () => {
       <TestimonialBanner />
 
       {/* Contact CTA - Full Width Image */}
-      <section className="relative h-[70vh]">
-        <div className="absolute inset-0">
+      <section ref={parallaxRef2} className="relative h-[70vh] overflow-hidden">
+        <motion.div style={{ y: y2 }} className="absolute inset-0">
           <img 
             src={greyCarImage} 
             alt="Contact" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/70" />
-        </div>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
