@@ -66,7 +66,7 @@ const Index = () => {
       </section>
 
       {/* About Section - Minimalistic */}
-      <section className="pt-16 pb-12 container mx-auto px-8">
+      <section className="pt-20 pb-12 container mx-auto px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[

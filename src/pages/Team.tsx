@@ -19,7 +19,7 @@ const Team = () => {
   
   const { scrollYProgress: scrollYProgress2 } = useScroll({
     target: parallaxRef2,
-    offset: ["start end", "end start"]
+    offset: ["end end", "end start"]
   });
   
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
