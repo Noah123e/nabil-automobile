@@ -9,7 +9,7 @@ import { Shield, Award, Headphones } from "lucide-react";
 import { vehicles } from "@/data/vehicles";
 import { Link } from "react-router-dom";
 import redOpelImage from "@/assets/red-opel.jpg";
-import greyCarImage from "@/assets/grey-car.jpg";
+import mercedesAmgImage from "@/assets/mercedes-amg.jpg";
 
 const Index = () => {
   const featuredVehicles = vehicles.slice(0, 3);
@@ -142,7 +142,7 @@ const Index = () => {
       <section ref={parallaxRef2} className="relative h-[70vh] overflow-hidden">
         <motion.div style={{ y: y2 }} className="absolute inset-0">
           <img 
-            src={greyCarImage} 
+            src={mercedesAmgImage} 
             alt="Contact" 
             className="w-full h-full object-cover"
           />
