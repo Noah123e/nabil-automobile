@@ -35,7 +35,7 @@ const VehicleDetail = () => {
 
   return (
     <AnimatedPage>
-      <div className="pt-32 pb-20 container mx-auto px-4">
+      <div className="pt-32 pb-16 container mx-auto px-4">
         {/* Back Button */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">

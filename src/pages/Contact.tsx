@@ -26,7 +26,7 @@ const Contact = () => {
   return (
     <AnimatedPage>
       {/* Header */}
-      <section className="pt-32 pb-12 container mx-auto px-4">
+      <section className="pt-32 pb-16 container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ const Contact = () => {
       </section>
 
       {/* Content */}
-      <section className="pb-20 container mx-auto px-4">
+      <section className="pb-16 container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div

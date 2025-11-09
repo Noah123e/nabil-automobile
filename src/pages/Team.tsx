@@ -64,7 +64,7 @@ const Team = () => {
       </section>
 
       {/* Owner Profile Section */}
-      <section className="py-24 bg-black">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             {/* Image */}

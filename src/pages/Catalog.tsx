@@ -105,7 +105,7 @@ const Catalog = () => {
   return (
     <AnimatedPage>
       {/* Header */}
-      <section className="pt-32 pb-12 container mx-auto px-4">
+      <section className="pt-32 pb-16 container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ const Catalog = () => {
       </section>
 
       {/* Vehicle Grid */}
-      <section className="pb-20 container mx-auto px-4">
+      <section className="pb-16 container mx-auto px-4">
         {filteredVehicles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredVehicles.map((vehicle) => (
