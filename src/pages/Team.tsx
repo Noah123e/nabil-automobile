@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedPage from "@/components/AnimatedPage";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Award, Shield, Heart } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import teamMember1 from "@/assets/team-member-1.jpg";
 import greyCarImage from "@/assets/grey-car.jpg";
 import porscheBadgeImage from "@/assets/porsche-badge.jpg";
@@ -131,59 +131,6 @@ const Team = () => {
                 <a href={`mailto:${owner.email}`}>Kontakt aufnehmen</a>
               </Button>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-24 bg-black border-t border-white/10">
-        <div className="container mx-auto px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <h2 className="font-display text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
-              Unsere Werte
-            </h2>
-            <div className="w-24 h-px bg-white mx-auto" />
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-6xl mx-auto">
-            {[
-              {
-                icon: Shield,
-                title: "Vertrauen",
-                text: "Transparenz und Ehrlichkeit in jeder Beratung",
-              },
-              {
-                icon: Award,
-                title: "Qualität",
-                text: "Nur geprüfte Premium-Fahrzeuge höchster Güte",
-              },
-              {
-                icon: Heart,
-                title: "Leidenschaft",
-                text: "Echte Begeisterung für Automobile",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="text-center space-y-6"
-              >
-                <item.icon className="w-12 h-12 text-white mx-auto" />
-                <h3 className="font-light text-white text-2xl tracking-wide">
-                  {item.title}
-                </h3>
-                <p className="text-white/60 font-light leading-relaxed">{item.text}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

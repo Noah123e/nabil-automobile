@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Shield, Award, Headphones } from "lucide-react";
 import { vehicles } from "@/data/vehicles";
 import { Link } from "react-router-dom";
-import porscheBadgeImage from "@/assets/porsche-badge.jpg";
+import redOpelImage from "@/assets/red-opel.jpg";
 import greyCarImage from "@/assets/grey-car.jpg";
 
 const Index = () => {
@@ -39,7 +39,7 @@ const Index = () => {
       <section ref={parallaxRef} className="relative h-screen overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0">
           <img 
-            src={porscheBadgeImage} 
+            src={redOpelImage} 
             alt="Premium Vehicle" 
             className="w-full h-full object-cover"
           />
