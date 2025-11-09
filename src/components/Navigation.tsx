@@ -17,7 +17,7 @@ const Navigation = () => {
     { label: "Home", path: "/" },
     { label: "Fahrzeuge", path: "/catalog" },
     { label: "Vergleichen", path: "/compare" },
-    { label: "Team", path: "/team" },
+    { label: "Über uns", path: "/team" },
     { label: "Kontakt", path: "/contact" },
   ];
 
