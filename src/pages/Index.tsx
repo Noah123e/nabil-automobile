@@ -164,7 +164,7 @@ const Index = () => {
               <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
                 <Link to="/contact">Kontakt aufnehmen</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-12 py-6 font-light tracking-wider">
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:text-white px-12 py-6 font-light tracking-wider">
                 <a href="tel:015789502200">01578 9502200</a>
               </Button>
             </div>
