@@ -21,14 +21,27 @@ const Compare = () => {
 
   if (compareVehicles.length === 0) {
     return (
-      <div className="pt-32 pb-20 container mx-auto px-4 text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-4">
-          Keine Fahrzeuge zum Vergleichen ausgewählt
-        </h1>
-        <Button asChild>
-          <Link to="/catalog">Zum Katalog</Link>
-        </Button>
-      </div>
+      <AnimatedPage>
+        <div className="pt-32 pb-20 container mx-auto px-4 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl font-bold text-foreground mb-4"
+          >
+            Keine Fahrzeuge zum Vergleichen ausgewählt
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Button asChild>
+              <Link to="/catalog">Zum Katalog</Link>
+            </Button>
+          </motion.div>
+        </div>
+      </AnimatedPage>
     );
   }
 
