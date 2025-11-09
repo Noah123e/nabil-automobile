@@ -2,11 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
-import { useState } from "react";
 
 const Hero = () => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
   const scrollToCatalog = () => {
     const catalogSection = document.getElementById("highlights");
     catalogSection?.scrollIntoView({ behavior: "smooth" });
@@ -17,9 +14,9 @@ const Hero = () => {
       {/* Background Video with Overlay */}
       <motion.div 
         initial={{ opacity: 0, filter: "blur(20px)", scale: 1.1 }}
-        animate={videoLoaded ? { opacity: 1, filter: "blur(0px)", scale: 1 } : {}}
+        animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0"
+        className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"
       >
         <video
           autoPlay
@@ -27,7 +24,6 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => setVideoLoaded(true)}
           className="w-full h-full object-cover"
         >
           <source src={heroVideo} type="video/mp4" />
