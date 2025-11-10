@@ -26,7 +26,7 @@ const Team = () => {
   const y2 = useTransform(scrollYProgress2, [0, 1], ["0%", "30%"]);
 
   const owner = {
-    name: "Nabil Alkubaisi",
+    name: "Nabil Yaish",
     position: "Geschäftsführer & Gründer",
     image: teamMember1,
     email: "nabil@nabil-automobile.de",
