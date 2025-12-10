@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { useWebsiteData } from "@/context/WebsiteDataContext";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
+  const { data } = useWebsiteData();
+  
   const scrollToCatalog = () => {
     const catalogSection = document.getElementById("highlights");
     catalogSection?.scrollIntoView({ behavior: "smooth" });
@@ -42,7 +44,7 @@ const Hero = () => {
           <motion.h1
             className="font-display text-6xl md:text-8xl font-light tracking-tight text-white"
           >
-            Premium Automobile
+            {data?.business_name || "Premium Automobile"}
           </motion.h1>
 
           <motion.div
@@ -58,7 +60,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1 }}
             className="text-xl md:text-2xl text-white/80 font-light tracking-wide"
           >
-            Exclusive. Elegant. Unique.
+            {data?.tagline || "Exclusive. Elegant. Unique."}
           </motion.p>
 
           <motion.div

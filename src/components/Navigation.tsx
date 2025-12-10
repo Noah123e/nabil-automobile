@@ -4,8 +4,10 @@ import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useWebsiteData } from "@/context/WebsiteDataContext";
 
 const Navigation = () => {
+  const { data, slug } = useWebsiteData();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [compareList] = useLocalStorage<string[]>("compareList", []);
@@ -13,12 +15,16 @@ const Navigation = () => {
   const [previousIndex, setPreviousIndex] = useState(-1);
   const [direction, setDirection] = useState<"left" | "right">("right");
 
+  const basePath = slug ? `/${slug}` : "";
+  const businessName = data?.business_name || "Alex Automobile";
+  const phone = data?.phone || "+1 555 950 2200";
+
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Vehicles", path: "/catalog" },
-    { label: "Compare", path: "/compare" },
-    { label: "About Us", path: "/team" },
-    { label: "Contact", path: "/contact" },
+    { label: "Home", path: `${basePath}` },
+    { label: "Vehicles", path: `${basePath}/catalog` },
+    { label: "Compare", path: `${basePath}/compare` },
+    { label: "About Us", path: `${basePath}/team` },
+    { label: "Contact", path: `${basePath}/contact` },
   ];
 
   useEffect(() => {
@@ -39,9 +45,11 @@ const Navigation = () => {
     }
   }, [location.pathname]);
 
-  const compareLink = compareList.length > 0 
-    ? `/compare?ids=${compareList.join(",")}` 
-    : "/compare";
+  const getCompareLink = () => {
+    return compareList.length > 0 
+      ? `${basePath}/compare?ids=${compareList.join(",")}` 
+      : `${basePath}/compare`;
+  };
 
   return (
     <motion.nav
@@ -54,16 +62,16 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to={basePath || "/"} className="flex items-center space-x-2">
             <span className="font-display text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-              Alex Automobile
+              {businessName}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
-              const linkTo = item.path === "/compare" ? compareLink : item.path;
+              const linkTo = item.label === "Compare" ? getCompareLink() : item.path;
               return (
                 <Link
                   key={item.path}
@@ -74,7 +82,7 @@ const Navigation = () => {
                 >
                   <span className="flex items-center gap-2">
                     {item.label}
-                    {item.path === "/compare" && compareList.length > 0 && (
+                    {item.label === "Compare" && compareList.length > 0 && (
                       <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
                         {compareList.length}
                       </span>
@@ -99,12 +107,12 @@ const Navigation = () => {
 
           {/* Contact Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="tel:+15559502200" className="flex items-center space-x-2 text-sm">
+            <a href={`tel:${phone.replace(/\s/g, "")}`} className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4 text-primary" />
-              <span className="text-foreground">+1 555 950 2200</span>
+              <span className="text-foreground">{phone}</span>
             </a>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">Contact</Link>
+              <Link to={`${basePath}/contact`}>Contact</Link>
             </Button>
           </div>
 
@@ -129,7 +137,7 @@ const Navigation = () => {
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               {navItems.map((item) => {
-                const linkTo = item.path === "/compare" ? compareLink : item.path;
+                const linkTo = item.label === "Compare" ? getCompareLink() : item.path;
                 return (
                   <Link
                     key={item.path}
@@ -140,7 +148,7 @@ const Navigation = () => {
                     }`}
                   >
                     <span>{item.label}</span>
-                    {item.path === "/compare" && compareList.length > 0 && (
+                    {item.label === "Compare" && compareList.length > 0 && (
                       <span className="bg-destructive text-destructive-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
                         {compareList.length}
                       </span>
@@ -149,11 +157,11 @@ const Navigation = () => {
                 );
               })}
               <a
-                href="tel:+15559502200"
+                href={`tel:${phone.replace(/\s/g, "")}`}
                 className="flex items-center space-x-2 py-2 text-base"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-foreground">+1 555 950 2200</span>
+                <span className="text-foreground">{phone}</span>
               </a>
             </div>
           </motion.div>
