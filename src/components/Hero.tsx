@@ -58,7 +58,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1 }}
             className="text-xl md:text-2xl text-white/80 font-light tracking-wide"
           >
-            Exklusiv. Elegant. Einzigartig.
+            Exclusive. Elegant. Unique.
           </motion.p>
 
           <motion.div
@@ -72,7 +72,7 @@ const Hero = () => {
               onClick={scrollToCatalog}
               className="bg-white text-black hover:bg-white/90 px-12 py-8 text-base font-light tracking-wider"
             >
-              Fahrzeuge entdecken
+              Discover Vehicles
             </Button>
           </motion.div>
         </motion.div>

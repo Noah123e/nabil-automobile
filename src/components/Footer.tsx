@@ -9,10 +9,10 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="font-display text-2xl font-bold text-primary">
-              Nabil Automobile
+              Alex Automobile
             </h3>
             <p className="text-muted-foreground text-sm">
-              Ihr Partner für exklusive Fahrzeuge in Senden. Fahrkultur auf höchstem Niveau.
+              Your partner for exclusive vehicles. Driving culture at the highest level.
             </p>
           </div>
 
@@ -27,7 +27,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/catalog" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Fahrzeuge
+                  Vehicles
                 </Link>
               </li>
               <li>
@@ -37,7 +37,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Kontakt
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -45,24 +45,24 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Kontakt</h4>
+            <h4 className="font-semibold text-foreground">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  Daimlerstraße 25<br />89250 Senden
+                  123 Auto Drive<br />Los Angeles, CA 90001
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="tel:015789502200" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  01578 9502200
+                <a href="tel:+15559502200" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  +1 555 950 2200
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="mailto:info@nabil-automobile.de" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  info@nabil-automobile.de
+                <a href="mailto:info@alex-automobile.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  info@alex-automobile.com
                 </a>
               </li>
             </ul>
@@ -70,19 +70,19 @@ const Footer = () => {
 
           {/* Opening Hours */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Öffnungszeiten</h4>
+            <h4 className="font-semibold text-foreground">Opening Hours</h4>
             <ul className="space-y-2 text-sm">
               <li className="flex justify-between text-muted-foreground">
-                <span>Mo – Fr:</span>
-                <span>10:00 – 18:00</span>
+                <span>Mon – Fri:</span>
+                <span>10:00 AM – 6:00 PM</span>
               </li>
               <li className="flex justify-between text-muted-foreground">
-                <span>Sa:</span>
-                <span>10:00 – 16:00</span>
+                <span>Sat:</span>
+                <span>10:00 AM – 4:00 PM</span>
               </li>
               <li className="flex justify-between text-muted-foreground">
-                <span>So:</span>
-                <span>Geschlossen</span>
+                <span>Sun:</span>
+                <span>Closed</span>
               </li>
             </ul>
             <div className="flex space-x-4 pt-4">
@@ -100,7 +100,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Nabil Automobile. Alle Rechte vorbehalten.</p>
+          <p>&copy; {new Date().getFullYear()} Alex Automobile. All rights reserved.</p>
         </div>
       </div>
     </footer>

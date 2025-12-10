@@ -16,9 +16,9 @@ const VehicleDetail = () => {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Fahrzeug nicht gefunden</h1>
+          <h1 className="text-2xl font-bold text-foreground mb-4">Vehicle not found</h1>
           <Button asChild>
-            <Link to="/catalog">Zurück zum Katalog</Link>
+            <Link to="/catalog">Back to Catalog</Link>
           </Button>
         </div>
       </div>
@@ -26,9 +26,9 @@ const VehicleDetail = () => {
   }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
       maximumFractionDigits: 0,
     }).format(price);
   };
@@ -41,7 +41,7 @@ const VehicleDetail = () => {
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">
             <Link to="/catalog">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Zurück zum Katalog
+              Back to Catalog
             </Link>
           </Button>
         </motion.div>
@@ -82,7 +82,7 @@ const VehicleDetail = () => {
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Erstzulassung</p>
+                    <p className="text-xs text-muted-foreground">First Registration</p>
                     <p className="font-semibold text-foreground">{vehicle.year}</p>
                   </div>
                 </div>
@@ -92,9 +92,9 @@ const VehicleDetail = () => {
                 <div className="flex items-center space-x-3">
                   <Gauge className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Kilometerstand</p>
+                    <p className="text-xs text-muted-foreground">Mileage</p>
                     <p className="font-semibold text-foreground">
-                      {vehicle.mileage.toLocaleString("de-DE")} km
+                      {vehicle.mileage.toLocaleString("en-US")} mi
                     </p>
                   </div>
                 </div>
@@ -104,8 +104,8 @@ const VehicleDetail = () => {
                 <div className="flex items-center space-x-3">
                   <Settings className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Leistung</p>
-                    <p className="font-semibold text-foreground">{vehicle.power} PS</p>
+                    <p className="text-xs text-muted-foreground">Power</p>
+                    <p className="font-semibold text-foreground">{vehicle.power} HP</p>
                   </div>
                 </div>
               </Card>
@@ -114,7 +114,7 @@ const VehicleDetail = () => {
                 <div className="flex items-center space-x-3">
                   <Fuel className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="text-xs text-muted-foreground">Kraftstoff</p>
+                    <p className="text-xs text-muted-foreground">Fuel</p>
                     <p className="font-semibold text-foreground">{vehicle.fuel}</p>
                   </div>
                 </div>
@@ -128,9 +128,9 @@ const VehicleDetail = () => {
                 size="lg"
                 className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                <a href="tel:015789502200">
+                <a href="tel:+15559502200">
                   <Phone className="w-4 h-4 mr-2" />
-                  Jetzt anrufen
+                  Call Now
                 </a>
               </Button>
               <Button
@@ -141,7 +141,7 @@ const VehicleDetail = () => {
               >
                 <Link to="/contact">
                   <Mail className="w-4 h-4 mr-2" />
-                  Anfrage senden
+                  Send Inquiry
                 </Link>
               </Button>
             </div>
@@ -159,20 +159,20 @@ const VehicleDetail = () => {
               <Tabs defaultValue="description" className="w-full">
                 <TabsList className="w-full bg-card border border-border">
                   <TabsTrigger value="description" className="flex-1">
-                    Beschreibung
+                    Description
                   </TabsTrigger>
                   <TabsTrigger value="features" className="flex-1">
-                    Ausstattung
+                    Features
                   </TabsTrigger>
                   <TabsTrigger value="specs" className="flex-1">
-                    Technische Daten
+                    Specifications
                   </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="description" className="mt-6">
                   <Card className="bg-card border-border p-6">
                     <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                      Fahrzeugbeschreibung
+                      Vehicle Description
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {vehicle.description}
@@ -183,7 +183,7 @@ const VehicleDetail = () => {
                 <TabsContent value="features" className="mt-6">
                   <Card className="bg-card border-border p-6">
                     <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                      Ausstattungshighlights
+                      Feature Highlights
                     </h3>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {vehicle.features.map((feature, index) => (
@@ -202,21 +202,21 @@ const VehicleDetail = () => {
                 <TabsContent value="specs" className="mt-6">
                   <Card className="bg-card border-border p-6">
                     <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                      Technische Daten
+                      Technical Specifications
                     </h3>
                     <div className="space-y-3">
                       {[
-                        { label: "Marke", value: vehicle.brand },
-                        { label: "Modell", value: vehicle.model },
-                        { label: "Erstzulassung", value: vehicle.year },
+                        { label: "Brand", value: vehicle.brand },
+                        { label: "Model", value: vehicle.model },
+                        { label: "First Registration", value: vehicle.year },
                         {
-                          label: "Kilometerstand",
-                          value: `${vehicle.mileage.toLocaleString("de-DE")} km`,
+                          label: "Mileage",
+                          value: `${vehicle.mileage.toLocaleString("en-US")} mi`,
                         },
-                        { label: "Leistung", value: `${vehicle.power} PS` },
-                        { label: "Kraftstoff", value: vehicle.fuel },
-                        { label: "Getriebe", value: vehicle.transmission },
-                        { label: "Fahrzeugtyp", value: vehicle.type },
+                        { label: "Power", value: `${vehicle.power} HP` },
+                        { label: "Fuel", value: vehicle.fuel },
+                        { label: "Transmission", value: vehicle.transmission },
+                        { label: "Vehicle Type", value: vehicle.type },
                       ].map((item, index) => (
                         <div
                           key={index}

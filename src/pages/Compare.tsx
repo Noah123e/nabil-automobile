@@ -12,9 +12,9 @@ const Compare = () => {
   const compareVehicles = vehicles.filter((v) => ids.includes(v.id));
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
       maximumFractionDigits: 0,
     }).format(price);
   };
@@ -29,7 +29,7 @@ const Compare = () => {
             transition={{ duration: 0.6 }}
             className="text-2xl font-bold text-foreground mb-4"
           >
-            Keine Fahrzeuge zum Vergleichen ausgewählt
+            No vehicles selected for comparison
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ const Compare = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Button asChild>
-              <Link to="/catalog">Zum Katalog</Link>
+              <Link to="/catalog">Go to Catalog</Link>
             </Button>
           </motion.div>
         </div>
@@ -46,18 +46,18 @@ const Compare = () => {
   }
 
   const comparisonRows = [
-    { label: "Preis", getValue: (v: typeof compareVehicles[0]) => formatPrice(v.price) },
-    { label: "Marke", getValue: (v: typeof compareVehicles[0]) => v.brand },
-    { label: "Modell", getValue: (v: typeof compareVehicles[0]) => v.model },
-    { label: "Baujahr", getValue: (v: typeof compareVehicles[0]) => v.year },
+    { label: "Price", getValue: (v: typeof compareVehicles[0]) => formatPrice(v.price) },
+    { label: "Brand", getValue: (v: typeof compareVehicles[0]) => v.brand },
+    { label: "Model", getValue: (v: typeof compareVehicles[0]) => v.model },
+    { label: "Year", getValue: (v: typeof compareVehicles[0]) => v.year },
     {
-      label: "Kilometerstand",
-      getValue: (v: typeof compareVehicles[0]) => `${v.mileage.toLocaleString("de-DE")} km`,
+      label: "Mileage",
+      getValue: (v: typeof compareVehicles[0]) => `${v.mileage.toLocaleString("en-US")} mi`,
     },
-    { label: "Leistung", getValue: (v: typeof compareVehicles[0]) => `${v.power} PS` },
-    { label: "Kraftstoff", getValue: (v: typeof compareVehicles[0]) => v.fuel },
-    { label: "Getriebe", getValue: (v: typeof compareVehicles[0]) => v.transmission },
-    { label: "Fahrzeugtyp", getValue: (v: typeof compareVehicles[0]) => v.type },
+    { label: "Power", getValue: (v: typeof compareVehicles[0]) => `${v.power} HP` },
+    { label: "Fuel", getValue: (v: typeof compareVehicles[0]) => v.fuel },
+    { label: "Transmission", getValue: (v: typeof compareVehicles[0]) => v.transmission },
+    { label: "Vehicle Type", getValue: (v: typeof compareVehicles[0]) => v.type },
   ];
 
   return (
@@ -68,7 +68,7 @@ const Compare = () => {
           <Button variant="ghost" asChild className="mb-8 hover:text-primary">
             <Link to="/catalog">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Zurück zum Katalog
+              Back to Catalog
             </Link>
           </Button>
         </motion.div>
@@ -81,10 +81,10 @@ const Compare = () => {
           className="text-center mb-12"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Fahrzeugvergleich
+            Vehicle Comparison
           </h1>
           <p className="text-muted-foreground text-lg">
-            Vergleichen Sie bis zu 3 Fahrzeuge nebeneinander
+            Compare up to 3 vehicles side by side
           </p>
         </motion.div>
 
@@ -159,7 +159,7 @@ const Compare = () => {
                     asChild
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   >
-                    <Link to={`/vehicle/${vehicle.id}`}>Details ansehen</Link>
+                    <Link to={`/vehicle/${vehicle.id}`}>View Details</Link>
                   </Button>
                 </div>
               ))}

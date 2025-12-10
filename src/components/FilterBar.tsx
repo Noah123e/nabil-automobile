@@ -73,7 +73,7 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
         <div className="flex-1 relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
-            placeholder="Marke oder Modell suchen..."
+            placeholder="Search brand or model..."
             value={search}
             onChange={(e) => handleSearchChange(e.target.value)}
             className="pl-10 bg-background border-border"
@@ -94,7 +94,7 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
             className="text-muted-foreground hover:text-foreground"
           >
             <X className="w-5 h-5 mr-2" />
-            Zurücksetzen
+            Reset
           </Button>
         )}
       </div>
@@ -103,10 +103,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
       {showFilters && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-border">
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Marke</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Brand</label>
             <Select value={filters.brand || undefined} onValueChange={(v) => handleFilterChange("brand", v)}>
               <SelectTrigger className="bg-background border-border">
-                <SelectValue placeholder="Alle Marken" />
+                <SelectValue placeholder="All Brands" />
               </SelectTrigger>
               <SelectContent>
                 {brands.map((brand) => (
@@ -119,10 +119,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Kraftstoff</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Fuel</label>
             <Select value={filters.fuel || undefined} onValueChange={(v) => handleFilterChange("fuel", v)}>
               <SelectTrigger className="bg-background border-border">
-                <SelectValue placeholder="Alle Kraftstoffe" />
+                <SelectValue placeholder="All Fuels" />
               </SelectTrigger>
               <SelectContent>
                 {fuelTypes.map((fuel) => (
@@ -135,13 +135,13 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Getriebe</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Transmission</label>
             <Select
               value={filters.transmission || undefined}
               onValueChange={(v) => handleFilterChange("transmission", v)}
             >
               <SelectTrigger className="bg-background border-border">
-                <SelectValue placeholder="Alle Getriebe" />
+                <SelectValue placeholder="All Transmissions" />
               </SelectTrigger>
               <SelectContent>
                 {transmissionTypes.map((trans) => (
@@ -154,10 +154,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Fahrzeugtyp</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Vehicle Type</label>
             <Select value={filters.type || undefined} onValueChange={(v) => handleFilterChange("type", v)}>
               <SelectTrigger className="bg-background border-border">
-                <SelectValue placeholder="Alle Typen" />
+                <SelectValue placeholder="All Types" />
               </SelectTrigger>
               <SelectContent>
                 {vehicleTypes.map((type) => (
@@ -170,10 +170,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Preis von</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Price From</label>
             <Input
               type="number"
-              placeholder="Min. €"
+              placeholder="Min. $"
               value={filters.minPrice}
               onChange={(e) => handleFilterChange("minPrice", e.target.value)}
               className="bg-background border-border"
@@ -181,10 +181,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Preis bis</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Price To</label>
             <Input
               type="number"
-              placeholder="Max. €"
+              placeholder="Max. $"
               value={filters.maxPrice}
               onChange={(e) => handleFilterChange("maxPrice", e.target.value)}
               className="bg-background border-border"
@@ -192,10 +192,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Baujahr von</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Year From</label>
             <Input
               type="number"
-              placeholder="Min. Jahr"
+              placeholder="Min. Year"
               value={filters.minYear}
               onChange={(e) => handleFilterChange("minYear", e.target.value)}
               className="bg-background border-border"
@@ -203,10 +203,10 @@ const FilterBar = ({ onFilterChange, onSearchChange }: FilterBarProps) => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground mb-2 block">Baujahr bis</label>
+            <label className="text-sm font-medium text-foreground mb-2 block">Year To</label>
             <Input
               type="number"
-              placeholder="Max. Jahr"
+              placeholder="Max. Year"
               value={filters.maxYear}
               onChange={(e) => handleFilterChange("maxYear", e.target.value)}
               className="bg-background border-border"

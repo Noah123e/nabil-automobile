@@ -89,12 +89,12 @@ const Catalog = () => {
   const handleCompare = (vehicleId: string) => {
     if (compareList.includes(vehicleId)) {
       setCompareList(compareList.filter((id) => id !== vehicleId));
-      toast.success("Fahrzeug aus dem Vergleich entfernt");
+      toast.success("Vehicle removed from comparison");
     } else if (compareList.length < 3) {
       setCompareList([...compareList, vehicleId]);
-      toast.success("Fahrzeug zum Vergleich hinzugefügt");
+      toast.success("Vehicle added to comparison");
     } else {
-      toast.error("Maximal 3 Fahrzeuge können verglichen werden");
+      toast.error("Maximum 3 vehicles can be compared");
     }
   };
 
@@ -113,10 +113,10 @@ const Catalog = () => {
           className="text-center mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Unsere Fahrzeuge
+            Our Vehicles
           </h1>
           <p className="text-muted-foreground text-lg">
-            {filteredVehicles.length} exklusive Fahrzeuge verfügbar
+            {filteredVehicles.length} exclusive vehicles available
           </p>
         </motion.div>
 
@@ -144,7 +144,7 @@ const Catalog = () => {
             className="text-center py-20"
           >
             <p className="text-muted-foreground text-lg">
-              Keine Fahrzeuge gefunden. Bitte passen Sie Ihre Filter an.
+              No vehicles found. Please adjust your filters.
             </p>
           </motion.div>
         )}
@@ -166,7 +166,7 @@ const Catalog = () => {
               <span className="bg-primary-foreground text-primary rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                 {compareList.length}
               </span>
-              Fahrzeug{compareList.length > 1 ? "e" : ""} vergleichen
+              Compare Vehicle{compareList.length > 1 ? "s" : ""}
             </span>
           </Button>
         </motion.div>

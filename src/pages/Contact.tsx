@@ -19,7 +19,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Vielen Dank für Ihre Nachricht! Wir melden uns bald bei Ihnen.");
+    toast.success("Thank you for your message! We will get back to you soon.");
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -34,10 +34,10 @@ const Contact = () => {
           className="text-center mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Kontakt und Anfahrt
+            Contact & Directions
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Wir freuen uns auf Ihre Nachricht oder Ihren Besuch in unserem Showroom
+            We look forward to your message or your visit to our showroom
           </p>
         </motion.div>
       </section>
@@ -53,7 +53,7 @@ const Contact = () => {
           >
             <Card className="bg-card border-border p-8">
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                Senden Sie uns eine Nachricht
+                Send Us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -71,7 +71,7 @@ const Contact = () => {
 
                 <div>
                   <Label htmlFor="email" className="text-foreground">
-                    E-Mail *
+                    Email *
                   </Label>
                   <Input
                     id="email"
@@ -85,7 +85,7 @@ const Contact = () => {
 
                 <div>
                   <Label htmlFor="phone" className="text-foreground">
-                    Telefon
+                    Phone
                   </Label>
                   <Input
                     id="phone"
@@ -98,7 +98,7 @@ const Contact = () => {
 
                 <div>
                   <Label htmlFor="message" className="text-foreground">
-                    Ihre Nachricht *
+                    Your Message *
                   </Label>
                   <Textarea
                     id="message"
@@ -115,7 +115,7 @@ const Contact = () => {
                   size="lg"
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
-                  Nachricht senden
+                  Send Message
                 </Button>
               </form>
             </Card>
@@ -133,11 +133,11 @@ const Contact = () => {
               <div className="flex items-start space-x-4">
                 <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Adresse</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Address</h3>
                   <p className="text-muted-foreground">
-                    Daimlerstraße 25<br />
-                    89250 Senden<br />
-                    Deutschland
+                    123 Auto Drive<br />
+                    Los Angeles, CA 90001<br />
+                    United States
                   </p>
                   <Button
                     variant="link"
@@ -145,11 +145,11 @@ const Contact = () => {
                     className="text-primary hover:text-primary/80 p-0 h-auto mt-2"
                   >
                     <a
-                      href="https://www.google.com/maps/search/?api=1&query=Daimlerstraße+25,+89250+Senden"
+                      href="https://www.google.com/maps/search/?api=1&query=123+Auto+Drive,+Los+Angeles,+CA"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Route planen →
+                      Get Directions →
                     </a>
                   </Button>
                 </div>
@@ -160,12 +160,12 @@ const Contact = () => {
               <div className="flex items-start space-x-4">
                 <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Telefon</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Phone</h3>
                   <a
-                    href="tel:015789502200"
+                    href="tel:+15559502200"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    01578 9502200
+                    +1 555 950 2200
                   </a>
                 </div>
               </div>
@@ -175,12 +175,12 @@ const Contact = () => {
               <div className="flex items-start space-x-4">
                 <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">E-Mail</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Email</h3>
                   <a
-                    href="mailto:info@nabil-automobile.de"
+                    href="mailto:info@alex-automobile.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    info@nabil-automobile.de
+                    info@alex-automobile.com
                   </a>
                 </div>
               </div>
@@ -190,19 +190,19 @@ const Contact = () => {
               <div className="flex items-start space-x-4">
                 <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div className="w-full">
-                  <h3 className="font-semibold text-foreground mb-3">Öffnungszeiten</h3>
+                  <h3 className="font-semibold text-foreground mb-3">Opening Hours</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Montag – Freitag:</span>
-                      <span className="text-foreground font-medium">10:00 – 18:00</span>
+                      <span className="text-muted-foreground">Monday – Friday:</span>
+                      <span className="text-foreground font-medium">10:00 AM – 6:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Samstag:</span>
-                      <span className="text-foreground font-medium">10:00 – 16:00</span>
+                      <span className="text-muted-foreground">Saturday:</span>
+                      <span className="text-foreground font-medium">10:00 AM – 4:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Sonntag:</span>
-                      <span className="text-foreground font-medium">Geschlossen</span>
+                      <span className="text-muted-foreground">Sunday:</span>
+                      <span className="text-foreground font-medium">Closed</span>
                     </div>
                   </div>
                 </div>
@@ -222,14 +222,14 @@ const Contact = () => {
           <Card className="bg-card border-border overflow-hidden">
             <div className="aspect-video w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.5!2d10.04!3d48.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDE4JzM2LjAiTiAxMMKwMDInMjQuMCJF!5e0!3m2!1sde!2sde!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.7!2d-118.25!3d34.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzAwLjAiTiAxMTjCsDE1JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Standort Nabil Automobile"
+                title="Alex Automobile Location"
               />
             </div>
           </Card>
