@@ -26,11 +26,11 @@ const Team = () => {
   const y2 = useTransform(scrollYProgress2, [0, 1], ["0%", "30%"]);
 
   const owner = {
-    name: "Nabil Yaish",
-    position: "Geschäftsführer & Gründer",
+    name: "Alex",
+    position: "CEO & Founder",
     image: teamMember1,
-    email: "nabil@nabil-automobile.de",
-    phone: "01578 9502200",
+    email: "alex@alex-automobile.com",
+    phone: "+1 555 950 2200",
   };
 
   return (
@@ -40,7 +40,7 @@ const Team = () => {
         <motion.div style={{ y }} className="absolute inset-0">
           <img 
             src={greyCarImage} 
-            alt="Nabil Automobile" 
+            alt="Alex Automobile" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
@@ -53,11 +53,11 @@ const Team = () => {
             className="max-w-4xl text-center"
           >
             <h1 className="font-display text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
-              Leidenschaft trifft Expertise
+              Passion Meets Expertise
             </h1>
             <div className="w-24 h-px bg-white mx-auto mb-8" />
             <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
-              Persönliche Beratung auf höchstem Niveau
+              Personal consultation at the highest level
             </p>
           </motion.div>
         </div>
@@ -100,10 +100,10 @@ const Team = () => {
               <div className="w-16 h-px bg-white/30" />
 
               <p className="text-lg text-white/80 font-light leading-relaxed">
-                Mit über 10 Jahren Erfahrung im Premium-Automobilgeschäft bin ich Ihr 
-                persönlicher Ansprechpartner für exklusive Fahrzeuge. Meine Leidenschaft 
-                für Automobile und mein Engagement für höchste Kundenzufriedenheit machen 
-                jede Beratung zu einem besonderen Erlebnis.
+                With over 10 years of experience in the premium automotive business, I am your 
+                personal contact for exclusive vehicles. My passion for automobiles and my 
+                commitment to the highest customer satisfaction make every consultation 
+                a special experience.
               </p>
 
               {/* Contact */}
@@ -129,7 +129,7 @@ const Team = () => {
                 size="lg" 
                 className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider mt-8"
               >
-                <a href={`mailto:${owner.email}`}>Kontakt aufnehmen</a>
+                <a href={`mailto:${owner.email}`}>Get in Touch</a>
               </Button>
             </motion.div>
           </div>
@@ -155,23 +155,23 @@ const Team = () => {
             className="max-w-4xl text-center"
           >
             <h2 className="font-display text-4xl md:text-6xl font-light text-white mb-8 tracking-tight">
-              Unsere Philosophie
+              Our Philosophy
             </h2>
             <div className="w-24 h-px bg-white mx-auto mb-12" />
             <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed mb-8">
-              Bei Nabil Automobile steht der Kunde im Mittelpunkt. Wir nehmen uns Zeit für 
-              eine ehrliche Beratung und helfen Ihnen, das perfekte Fahrzeug zu finden.
+              At Alex Automobile, the customer is at the center. We take time for 
+              honest advice and help you find the perfect vehicle.
             </p>
             <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed mb-12">
-              Qualität, Transparenz und persönlicher Service sind nicht nur Werte – 
-              sie sind die Grundlage unserer täglichen Arbeit.
+              Quality, transparency, and personal service are not just values – 
+              they are the foundation of our daily work.
             </p>
             <Button 
               asChild 
               size="lg" 
               className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider"
             >
-              <Link to="/contact">Jetzt Beratungstermin vereinbaren</Link>
+              <Link to="/contact">Schedule a Consultation</Link>
             </Button>
           </motion.div>
         </div>

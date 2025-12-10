@@ -3,38 +3,38 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Michael Schmidt",
+    name: "Michael Smith",
     rating: 5,
-    text: "Exzellenter Service! Vom Erstkontakt bis zur Abholung – alles perfekt.",
-    role: "Mercedes S-Klasse Kunde",
+    text: "Excellent service! From the first contact to pickup – everything was perfect.",
+    role: "Mercedes S-Class Customer",
   },
   {
     id: 2,
     name: "Sarah Weber",
     rating: 5,
-    text: "Top Beratung, ehrliche Preise und ein echtes Luxusgefühl beim Kauf.",
-    role: "BMW M5 Kundin",
+    text: "Top consultation, honest prices, and a true luxury experience when buying.",
+    role: "BMW M5 Customer",
   },
   {
     id: 3,
-    name: "Thomas Müller",
+    name: "Thomas Miller",
     rating: 5,
-    text: "Sehr professionelles Team mit echter Leidenschaft für Automobile.",
-    role: "Porsche 911 Kunde",
+    text: "Very professional team with genuine passion for automobiles.",
+    role: "Porsche 911 Customer",
   },
   {
     id: 4,
     name: "Anna Becker",
     rating: 5,
-    text: "Fantastische Erfahrung! Wurde nie unter Druck gesetzt und habe mein Traumauto gefunden.",
-    role: "Audi RS6 Kundin",
+    text: "Fantastic experience! Never felt pressured and found my dream car.",
+    role: "Audi RS6 Customer",
   },
   {
     id: 5,
-    name: "Markus Klein",
+    name: "Marcus Klein",
     rating: 5,
-    text: "Beste Autohaus-Erfahrung meines Lebens. Absolute Empfehlung!",
-    role: "AMG GT Kunde",
+    text: "Best dealership experience of my life. Highly recommended!",
+    role: "AMG GT Customer",
   },
 ];
 
@@ -47,10 +47,10 @@ const TestimonialBanner = () => {
       <div className="container mx-auto px-4 mb-12">
         <div className="text-center">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Was unsere Kunden sagen
+            What Our Customers Say
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Vertrauen und Zufriedenheit sind die Grundlage unserer Arbeit
+            Trust and satisfaction are the foundation of our work
           </p>
         </div>
       </div>

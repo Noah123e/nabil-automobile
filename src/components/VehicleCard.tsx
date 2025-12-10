@@ -13,9 +13,9 @@ interface VehicleCardProps {
 
 const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) => {
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
       maximumFractionDigits: 0,
     }).format(price);
   };
@@ -69,19 +69,19 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
           {/* Specs */}
           <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
             <div className="flex flex-col space-y-1">
-              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Km</span>
-              <span className="text-sm text-foreground font-light">{vehicle.mileage.toLocaleString("de-DE")}</span>
+              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Miles</span>
+              <span className="text-sm text-foreground font-light">{vehicle.mileage.toLocaleString("en-US")}</span>
             </div>
             <div className="flex flex-col space-y-1">
-              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Jahr</span>
+              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Year</span>
               <span className="text-sm text-foreground font-light">{vehicle.year}</span>
             </div>
             <div className="flex flex-col space-y-1">
-              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">PS</span>
+              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">HP</span>
               <span className="text-sm text-foreground font-light">{vehicle.power}</span>
             </div>
             <div className="flex flex-col space-y-1">
-              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Kraftstoff</span>
+              <span className="text-xs text-muted-foreground font-light tracking-wider uppercase">Fuel</span>
               <span className="text-sm text-foreground font-light">{vehicle.fuel}</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const VehicleCard = ({ vehicle, onCompare, isInComparison }: VehicleCardProps) =
                 }`}
               >
                 {isInComparison && <Check className="w-4 h-4 mr-1" />}
-                {isInComparison ? "Entfernen" : "Vergleichen"}
+                {isInComparison ? "Remove" : "Compare"}
               </Button>
             )}
           </div>

@@ -54,12 +54,12 @@ const Index = () => {
             className="max-w-4xl text-center"
           >
             <h2 className="font-display text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
-              Ihr Partner für exklusive Fahrzeuge
+              Your Partner for Exclusive Vehicles
             </h2>
             <div className="w-24 h-px bg-white mx-auto mb-8" />
             <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-              Bei Nabil Automobile verbinden wir Leidenschaft für Technik mit höchster 
-              Kundenzufriedenheit.
+              At Alex Automobile, we combine passion for technology with the highest 
+              customer satisfaction.
             </p>
           </motion.div>
         </div>
@@ -72,18 +72,18 @@ const Index = () => {
             {[
               {
                 icon: Shield,
-                title: "Qualität",
-                text: "TÜV-zertifiziert",
+                title: "Quality",
+                text: "Certified Excellence",
               },
               {
                 icon: Award,
                 title: "Premium",
-                text: "Exklusive Auswahl",
+                text: "Exclusive Selection",
               },
               {
                 icon: Headphones,
                 title: "Service",
-                text: "Persönliche Betreuung",
+                text: "Personal Support",
               },
             ].map((item, index) => (
               <motion.div
@@ -116,7 +116,7 @@ const Index = () => {
             className="text-center mb-20"
           >
             <h2 className="font-display text-5xl md:text-7xl font-light text-foreground mb-6 tracking-tight">
-              Unsere Fahrzeuge
+              Our Vehicles
             </h2>
             <div className="w-24 h-px bg-white mx-auto" />
           </motion.div>
@@ -129,7 +129,7 @@ const Index = () => {
 
           <div className="text-center">
             <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
-              <Link to="/catalog">Alle Fahrzeuge ansehen</Link>
+              <Link to="/catalog">View All Vehicles</Link>
             </Button>
           </div>
         </div>
@@ -157,15 +157,15 @@ const Index = () => {
         >
           <div className="text-center max-w-4xl">
             <h2 className="font-display text-4xl md:text-6xl font-light text-white mb-8 tracking-tight">
-              Bereit für Ihr Traumfahrzeug?
+              Ready for Your Dream Car?
             </h2>
             <div className="w-24 h-px bg-white mx-auto mb-12" />
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
-                <Link to="/contact">Kontakt aufnehmen</Link>
+                <Link to="/contact">Contact Us</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:text-white px-12 py-6 font-light tracking-wider">
-                <a href="tel:015789502200">01578 9502200</a>
+                <a href="tel:+15559502200">+1 555 950 2200</a>
               </Button>
             </div>
           </div>

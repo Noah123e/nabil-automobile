@@ -28,9 +28,9 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
   const totalInterest = totalCost - vehiclePrice;
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
       maximumFractionDigits: 0,
     }).format(amount);
   };
@@ -38,14 +38,14 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
   return (
     <Card className="bg-card border-border p-6">
       <h3 className="font-display text-2xl font-bold text-foreground mb-6">
-        Finanzierungsrechner
+        Finance Calculator
       </h3>
 
       <div className="space-y-6">
         {/* Down Payment */}
         <div>
           <Label className="text-foreground mb-2 block">
-            Anzahlung: {formatCurrency(downPayment)}
+            Down Payment: {formatCurrency(downPayment)}
           </Label>
           <Slider
             value={[downPayment]}
@@ -59,7 +59,7 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
 
         {/* Duration */}
         <div>
-          <Label className="text-foreground mb-2 block">Laufzeit: {months} Monate</Label>
+          <Label className="text-foreground mb-2 block">Term: {months} Months</Label>
           <Slider
             value={[months]}
             onValueChange={(v) => setMonths(v[0])}
@@ -72,10 +72,10 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
 
         {/* Interest Rate (Read-only) */}
         <div>
-          <Label className="text-foreground mb-2 block">Zinssatz</Label>
+          <Label className="text-foreground mb-2 block">Interest Rate</Label>
           <Input
             type="text"
-            value={`${interestRate}% p.a.`}
+            value={`${interestRate}% APR`}
             disabled
             className="bg-muted border-border"
           />
@@ -88,7 +88,7 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
           className="bg-black border border-white/10 p-8 space-y-4"
         >
           <div className="flex justify-between items-center">
-            <span className="text-white/60 font-light tracking-wider uppercase text-sm">Monatliche Rate</span>
+            <span className="text-white/60 font-light tracking-wider uppercase text-sm">Monthly Payment</span>
             <span className="font-display text-4xl font-light text-white">
               {formatCurrency(monthlyRate)}
             </span>
@@ -96,25 +96,24 @@ const FinanceCalculator = ({ vehiclePrice }: FinanceCalculatorProps) => {
 
           <div className="border-t border-white/10 pt-4 space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-white/60 font-light">Finanzierungssumme</span>
+              <span className="text-white/60 font-light">Loan Amount</span>
               <span className="text-white font-light">
                 {formatCurrency(vehiclePrice - downPayment)}
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-white/60 font-light">Gesamtkosten</span>
+              <span className="text-white/60 font-light">Total Cost</span>
               <span className="text-white font-light">{formatCurrency(totalCost)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-white/60 font-light">Zinsen gesamt</span>
+              <span className="text-white/60 font-light">Total Interest</span>
               <span className="text-white font-light">{formatCurrency(totalInterest)}</span>
             </div>
           </div>
         </motion.div>
 
         <p className="text-xs text-muted-foreground">
-          * Dies ist eine beispielhafte Berechnung. Die tatsächlichen Konditionen können
-          abweichen. Bitte kontaktieren Sie uns für ein individuelles Angebot.
+          * This is an example calculation. Actual terms may vary. Please contact us for a personalized offer.
         </p>
       </div>
     </Card>

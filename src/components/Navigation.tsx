@@ -15,10 +15,10 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "Fahrzeuge", path: "/catalog" },
-    { label: "Vergleichen", path: "/compare" },
-    { label: "Über uns", path: "/team" },
-    { label: "Kontakt", path: "/contact" },
+    { label: "Vehicles", path: "/catalog" },
+    { label: "Compare", path: "/compare" },
+    { label: "About Us", path: "/team" },
+    { label: "Contact", path: "/contact" },
   ];
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <span className="font-display text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-              Nabil Automobile
+              Alex Automobile
             </span>
           </Link>
 
@@ -99,12 +99,12 @@ const Navigation = () => {
 
           {/* Contact Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="tel:015789502200" className="flex items-center space-x-2 text-sm">
+            <a href="tel:+15559502200" className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4 text-primary" />
-              <span className="text-foreground">01578 9502200</span>
+              <span className="text-foreground">+1 555 950 2200</span>
             </a>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">Kontakt</Link>
+              <Link to="/contact">Contact</Link>
             </Button>
           </div>
 
@@ -149,11 +149,11 @@ const Navigation = () => {
                 );
               })}
               <a
-                href="tel:015789502200"
+                href="tel:+15559502200"
                 className="flex items-center space-x-2 py-2 text-base"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-foreground">01578 9502200</span>
+                <span className="text-foreground">+1 555 950 2200</span>
               </a>
             </div>
           </motion.div>
