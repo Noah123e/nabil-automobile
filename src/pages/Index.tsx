@@ -8,13 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Shield, Award, Headphones } from "lucide-react";
 import { vehicles } from "@/data/vehicles";
 import { Link } from "react-router-dom";
+import { useWebsiteData } from "@/context/WebsiteDataContext";
 import redOpelImage from "@/assets/red-opel.jpg";
 import mercedesAmgImage from "@/assets/mercedes-amg.jpg";
 
 const Index = () => {
+  const { data, slug } = useWebsiteData();
   const featuredVehicles = vehicles.slice(0, 3);
   const parallaxRef = useRef<HTMLDivElement>(null);
   const parallaxRef2 = useRef<HTMLDivElement>(null);
+  const basePath = slug ? `/${slug}` : "";
   
   const { scrollYProgress } = useScroll({
     target: parallaxRef,
@@ -29,6 +32,10 @@ const Index = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const y2 = useTransform(scrollYProgress2, [0, 1], ["0%", "30%"]);
 
+  const tagline = data?.tagline || "Your Partner for Exclusive Vehicles";
+  const aboutSection = data?.about_section || `At ${data?.business_name || "Alex Automobile"}, we combine passion for technology with the highest customer satisfaction.`;
+  const phone = data?.phone || "+1 555 950 2200";
+
   return (
     <AnimatedPage>
       
@@ -39,7 +46,7 @@ const Index = () => {
       <section ref={parallaxRef} className="relative h-screen overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0">
           <img 
-            src={redOpelImage} 
+            src={data?.photos?.[0] || redOpelImage} 
             alt="Premium Vehicle" 
             className="w-full h-full object-cover"
           />
@@ -54,12 +61,11 @@ const Index = () => {
             className="max-w-4xl text-center"
           >
             <h2 className="font-display text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
-              Your Partner for Exclusive Vehicles
+              {tagline}
             </h2>
             <div className="w-24 h-px bg-white mx-auto mb-8" />
             <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-              At Alex Automobile, we combine passion for technology with the highest 
-              customer satisfaction.
+              {aboutSection}
             </p>
           </motion.div>
         </div>
@@ -129,7 +135,7 @@ const Index = () => {
 
           <div className="text-center">
             <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
-              <Link to="/catalog">View All Vehicles</Link>
+              <Link to={`${basePath}/catalog`}>View All Vehicles</Link>
             </Button>
           </div>
         </div>
@@ -142,7 +148,7 @@ const Index = () => {
       <section ref={parallaxRef2} className="relative h-[70vh] overflow-hidden">
         <motion.div style={{ y: y2 }} className="absolute inset-0">
           <img 
-            src={mercedesAmgImage} 
+            src={data?.photos?.[1] || mercedesAmgImage} 
             alt="Contact" 
             className="w-full h-full object-cover"
           />
@@ -162,10 +168,10 @@ const Index = () => {
             <div className="w-24 h-px bg-white mx-auto mb-12" />
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 px-12 py-6 font-light tracking-wider">
-                <Link to="/contact">Contact Us</Link>
+                <Link to={`${basePath}/contact`}>Contact Us</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:text-white px-12 py-6 font-light tracking-wider">
-                <a href="tel:+15559502200">+1 555 950 2200</a>
+                <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
               </Button>
             </div>
           </div>
